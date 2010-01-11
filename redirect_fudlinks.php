@@ -25,8 +25,8 @@ function redirect_fudlinks() {
 
     // If no msg id specified, show the topic
     } elseif ( is_numeric($_GET['th']) && !empty($_GET['th']) ){
-      // Get the corresponding topic id
-      $sql = "SELECT bb_posts_topic_id AS topic_id FROM map_posts WHERE fud_msg_id = $msg_id";
+      $th_id = $_GET['th'];
+      $sql = "SELECT bb_posts_topic_id AS topic_id FROM map_posts WHERE fud_thread_id = $th_id";
       $obj = $bbdb->get_row( $sql );
       wp_redirect( $site .'topic.php?id='. $obj->topic_id, 301 );
     }
